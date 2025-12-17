@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BENEFITS } from '../constants';
-import { ChevronRight, X } from 'lucide-react';
+import { BENEFITS } from '../constants.tsx';
+import { ChevronRight } from 'lucide-react';
 
 export const BenefitsSection: React.FC = () => {
   return (

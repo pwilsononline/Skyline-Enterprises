@@ -1,11 +1,10 @@
-
 import React, { useEffect } from 'react';
-import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { About } from './components/About';
-import { BenefitsSection } from './components/BenefitsSection';
-import { IndustriesGrid } from './components/IndustriesGrid';
-import { EligibilityChecker } from './components/EligibilityChecker';
+import { Navbar } from './components/Navbar.tsx';
+import { Hero } from './components/Hero.tsx';
+import { About } from './components/About.tsx';
+import { BenefitsSection } from './components/BenefitsSection.tsx';
+import { IndustriesGrid } from './components/IndustriesGrid.tsx';
+import { EligibilityChecker } from './components/EligibilityChecker.tsx';
 import { motion, useScroll, useSpring } from 'framer-motion';
 
 const App: React.FC = () => {

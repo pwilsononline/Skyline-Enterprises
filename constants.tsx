@@ -1,8 +1,7 @@
-
-import { Industry, FundingTier, Feature } from './types';
+import { Industry, FundingTier, Feature } from './types.ts';
 
 export const INDUSTRIES: Industry[] = [
-  { name: 'Recruiters', icon: 'UserSearch' },
+  { name: 'Recruiters', icon: 'Search' },
   { name: 'Dentists', icon: 'Stethoscope' },
   { name: 'Med Spas', icon: 'Sparkles' },
   { name: 'Roofers', icon: 'Home' },

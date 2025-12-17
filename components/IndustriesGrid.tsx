@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { INDUSTRIES } from '../constants';
+import { INDUSTRIES } from '../constants.tsx';
 import * as Icons from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -18,7 +17,8 @@ export const IndustriesGrid: React.FC = () => {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {INDUSTRIES.map((industry, idx) => {
-          const IconComponent = (Icons as any)[industry.icon];
+          // Safer dynamic icon resolution for ESM
+          const IconComponent = (Icons as any)[industry.icon] || Icons.HelpCircle;
           return (
             <motion.div
               key={industry.name}
@@ -30,7 +30,7 @@ export const IndustriesGrid: React.FC = () => {
               className="p-10 rounded-3xl bg-white/[0.03] border border-white/5 flex flex-col items-center justify-center gap-6 group hover:border-red-600/30 transition-all"
             >
               <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-red-600 group-hover:text-white transition-all text-gray-500">
-                {IconComponent && <IconComponent size={32} />}
+                <IconComponent size={32} />
               </div>
               <span className="text-white font-bold uppercase tracking-widest text-xs group-hover:text-red-500 transition-colors">
                 {industry.name}

@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { geminiService } from '../services/geminiService';
+import { geminiService } from '../services/geminiService.ts';
 import { Sparkles, Send, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -12,9 +11,14 @@ export const EligibilityChecker: React.FC = () => {
   const handleCheck = async () => {
     if (!input.trim()) return;
     setLoading(true);
-    const analysis = await geminiService.checkEligibility(input);
-    setResult(analysis || "Error processing eligibility.");
-    setLoading(false);
+    try {
+      const analysis = await geminiService.checkEligibility(input);
+      setResult(analysis || "Error processing eligibility.");
+    } catch (err) {
+      setResult("Could not complete analysis. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -56,7 +60,7 @@ export const EligibilityChecker: React.FC = () => {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
-                className="mt-12 p-8 rounded-2xl bg-white/5 border border-white/10 text-gray-300 prose prose-invert max-w-none"
+                className="mt-12 p-8 rounded-2xl bg-white/5 border border-white/10 text-gray-300 max-w-none"
               >
                 <div className="text-xs font-bold uppercase tracking-widest text-red-500 mb-4 flex items-center gap-2">
                   <Sparkles size={14} /> AI Analysis Result
